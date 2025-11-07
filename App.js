@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -6,12 +6,14 @@ import LoginScreen from './src/screens/LoginScreen';
 import CreateTicketScreen from './src/screens/CreateTicketScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import { AuthProvider } from './src/context/AuthContext';
+import { setNavigationRef } from './src/services/api';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const navigationRef = useRef();
 
   useEffect(() => {
     checkAuthentication();
@@ -34,7 +36,13 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
+      <NavigationContainer 
+        ref={navigationRef}
+        onReady={() => {
+          // Configura a referência de navegação quando estiver pronto
+          setNavigationRef(navigationRef.current);
+        }}
+      >
         <Stack.Navigator
           initialRouteName={isAuthenticated ? "CreateTicket" : "Login"}
           screenOptions={{

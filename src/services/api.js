@@ -31,13 +31,28 @@ api.interceptors.request.use(
 );
 
 // Interceptor para tratar erros de autenticação
+let navigationRef = null;
+
+// Função para configurar a navegação (deve ser chamada no App.js)
+export const setNavigationRef = (ref) => {
+  navigationRef = ref;
+};
+
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
-      // Token inválido ou expirado
+      // Token inválido, expirado ou usuário foi deletado
       await AsyncStorage.removeItem('token');
       await AsyncStorage.removeItem('user');
+      
+      // Redireciona para a tela de login se a navegação estiver disponível
+      if (navigationRef) {
+        navigationRef.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        });
+      }
     }
     return Promise.reject(error);
   }
