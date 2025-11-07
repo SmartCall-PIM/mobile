@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "SmartCall Mobile",
+    "slug": "smartcall-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "254396ff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.smartcall.mobile"
+    },
+    "android": {
+      "package": "com.smartcall.mobile"
+    },
+    "sdkVersion": "52.0.0",
+    "newArchEnabled": true
+  }
+}
