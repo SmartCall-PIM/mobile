@@ -1,10 +1,15 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Para Android emulator use: http://10.0.2.2:8000
-// Para iOS simulator use: http://localhost:8000
-// Para dispositivo físico use o IP da sua máquina: http://192.168.x.x:8000
-const API_BASE_URL = 'http://192.168.1.64:8000/api';
+// Configuração da URL da API
+// PRODUÇÃO: URL do backend na Azure
+const API_BASE_URL = 'https://smartcall-api-bud5fvfdcda7d2df.brazilsouth-01.azurewebsites.net/api';
+
+// DESENVOLVIMENTO LOCAL (descomente para testar local):
+// Para Android emulator use: http://10.0.2.2:8000/api
+// Para iOS simulator use: http://localhost:8000/api
+// Para dispositivo físico use o IP da sua máquina: http://192.168.x.x:8000/api
+// const API_BASE_URL = 'http://192.168.1.64:8000/api';
 
 console.log('🌐 API Base URL configurada:', API_BASE_URL);
 
