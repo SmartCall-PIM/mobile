@@ -7,11 +7,9 @@
     "userInterfaceStyle": "light",
     "splash": {
       "resizeMode": "contain",
-      "backgroundColor": "254396ff"
+      "backgroundColor": "#254396"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.smartcall.mobile"
@@ -19,7 +17,10 @@
     "android": {
       "package": "com.smartcall.mobile"
     },
-    "sdkVersion": "52.0.0",
-    "newArchEnabled": true
+    "extra": {
+      "eas": {
+        "projectId": "ad838873-3b30-4b27-86ab-07e361093efd"
+      }
+    }
   }
 }
